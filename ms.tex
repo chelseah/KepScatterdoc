@@ -1,0 +1,205 @@
+\documentclass[twocolumn]{emulateapj}
+
+\newcommand{\vdag}{(v)^\dagger}
+\newcommand\aastex{AAS\TeX}
+\newcommand\latex{La\TeX}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TITLE %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Title}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% AUTHOR %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\author{Emily Deibert}
+\author{Chelsea Huang}
+\author{Cristobal Petrovich}
+%\affil{Dunlap Institute for Astronomy \& Astrophysics, University of Toronto, 50 St. George Street, Toronto, Ontario, M5S 3H4, Canada \href{mailto:emily.deibert@mail.utoronto.ca}{emily.deibert@mail.utoronto.ca}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ABSTRACT %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+Abstract
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% KEYWORDS %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\keywords{planets and satellites: dynamical evolution and stability}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% INTRODUCTION %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction} \label{sec:intro}
+Originally launched in 2009, NASA's \textit{Kepler} mission is responsible for the discovery of thousands of planetary candidates, including over 2000 confirmed planets (\citealt{Morton2016}). Through monitoring periodic changes in brightness of light curves from stars (i.e. the ``transit method''), \textit{Kepler} is able to detect planets with radii on the order of 1 $\text{R}_{\oplus}$, although the majority of planets detected are so-called ``super-Earths'' or ``sub-Neptunes'' (with radii $\sim 1.2 - 3 \text{R}_{\oplus}$, \citealt{Lai2016}). Of the thousands of planetary systems discovered by \textit{Kepler} to date, 80\% are single-transit systems (i.e. only one planet is observed to transit), while the other 20\% consist of 2-7 transiting planets (\citealt{Lai2016}). As detailed in \citealt{Johansen2012}, the relative numbers of single- and multi-transit systems is a function of both the intrinsic system multiplicity and mutual inclinations between planets, and for this reason can reveal important information about the architecture of compact planetary systems.
+
+Many studies have explored the underlying planetary system architectures that can account for the relative numbers of single- and multi-transit systems in the \textit{Kepler} data (see, for e.g., \citealt{Lai2016}, \citealt{Johansen2012}, and \citealt{Moriarty2015}); however, models with a single mutual inclination distribution that have been proposed to date have consistently under-predicted the number of single-transit systems as compared with observations---a problem that will henceforth be referred to as the ``\textit{Kepler} dichotomy''. Previous studies into the \textit{Kepler} dichotomy have generally come to the conclusion that the architectures of planetary systems must either vary significantly or have more than one main mode. In this paper, however, we put forth an alternate explanation by which scattering between distant planets with properties drawn from Radial Velocity (RV) surveys can account for the relative numbers of single- and multi-transit systems observed in \textit{Kepler} data. 
+
+Our methods involve drawing from observations of both \textit{Kepler} and RV planets in order to simulate systems consisting of a closely-packed (i.e. within 1 AU) inner system of super-Earths and a more distant (i.e. between 2-5 AU) system of Jupiter-like planets. Using the N-body code \texttt{REBOUND} (\citealt{Rein2011}), we evolve a statistically-significant number of such systems over time and report on the mutual inclinations and number of transits of the evolved systems.
+
+This paper will proceed as follows. In section...
+
+
+\section{Method}
+\label{sec:method}
+
+{\bf TBD: talk about rebound, ias15 .......}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% INITIAL %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Initial conditions}
+\label{sec:init}
+The systems were initialized with only 3 Jupiters (and no Super Earths) located between 2-5 AU in such a way that the systems will eventually become unstable. In particular, the planets have been placed within 3 hill radii of one another. The masses of the planets are randomized between 0.3 $M_{\rm J}$ and 3 $M_{\rm J}$. Fig. \ref{fig:mass-init} shows the initial setup of the randomized-mass simulations.
+
+\begin{figure}[htbp!]
+\includegraphics[width=\columnwidth]{Initial.pdf}
+\caption{The initial plot of orbital eccentricity vs semi-major axis, colour-coded by mass, for the set of simulations where the planets' masses have been randomized.}
+\label{fig:mass-init}
+\end{figure}
+
+An additional 160 simulations consisting of 3 Jupiters and 3 Super-Earths were evolved over 1 Myr. Each system was initialized with 3 Jupiters located between 2-5 AU in such a way that the systems will eventually become unstable---in particular, the planets were placed within 3 hill radii of each other. The masses of the Jupiters were randomized between 0.3-3 $\text{M}_{J}$. Each of the Jupiters had a radius of 0.5 $\text{R}_{J}$. Each system was also initialized with 3 Super-Earths located inwards of 1 AU. The masses of the Super-Earths were either 5, 10, or 15 $\text{M}_{\oplus}$, but the ordering of the masses was randomized. Additionally, the eccentricities and inclinations of the Super-Earths were drawn from Rayleigh distributions with $\sigma_e=0.01$, and $\sigma_i=1^{\circ}$. The semi-major axes of the Super-Earths were draw from an analytical distribution so that the final distribution of period ratio between planets would match the observed one by Kepler (see Fig. \ref{fig:init-pratio}). Each of the Super-Earths had a radius of 1 $\text{R}_{\oplus}$. Figs. \ref{fig:init-e} and \ref{fig:init-i} show the initial eccentricities and inclinations of the simulations. Planets 1-3 are Jupiters, while planets 4-6 are Super-Earths.
+
+
+\begin{figure}[htbp!]
+\centering
+\includegraphics[width=\columnwidth]{newinc-initial.pdf}
+\caption{The initial orbital eccentricity vs semi-major axis for the six planets run.}
+\label{fig:init-e}
+\end{figure}
+
+\begin{figure}[htbp!]
+\includegraphics[width=\columnwidth]{newinc-initial-inc.pdf}
+\caption{The initial nclination vs semi-major axis for the six planets run.}
+\label{fig:init-i}
+\end{figure}
+
+\begin{figure}[htbp!]
+\includegraphics[width=\columnwidth]{Period_ratio.pdf}
+\caption{The initial period ratio distribution of neighboring super Earths.}
+\label{fig:init-pratio}
+\end{figure}
+
+
+\section{Results}
+\label{sec:results}
+\subsection{The radial velocity population} \label{sec:juponly}
+In this section, the results of 160 simulations that have been integrated over 1 Myr are analyzed. 
+
+\begin{figure}[htbp!]
+\centering
+\includegraphics[width=\columnwidth]{EvsA.pdf}
+\caption{The final conditions of the randomized-mass simulations, with the surviving planets colour-coded by the multiplicity of their system.}
+\label{fig:mass-final}
+\end{figure}
+
+\begin{figure}[htbp!]
+\centering
+\includegraphics[width=\columnwidth]{Final-Mass.pdf}
+\caption{The final eccentricities vs semi-major axes of the surviving planets. Planets are colour-coded by their masses.}
+\label{fig:mass-final-mass}
+\end{figure}
+
+In Fig. \ref{fig:mass-final}, we see the final conditions of the randomized-mass simulations. Many planets have migrated outwards, while many others have become highly-inclined after 1 Myr of evolution. The systems which have remained close to their initial conditions tend to be those for which the multiplicity of the system is 3---these are likely systems that have remained dynamically-cold throughout the integration.
+
+We also show the end results in terms of the final masses of the planets, as many of them have collided throughout the integration. Fig. \ref{fig:mass-final-mass} shows the eccentricity vs semi-major axis of the surviving planets in these simulations, with the planets colour-coded by their final masses. The final distribution of the orbital eccentricities of the giant planets are shown in Fig. \ref{fig:hist-ecc-jup}, which is similar to the observed eccentricity of radial velocity population. 
+
+\begin{figure}[htbp!]
+\centering
+\includegraphics[width=\columnwidth]{Ecc_JupiterOnly.pdf}
+\caption{The final eccentricities distribution of the surviving planets. Black line indicate a Rayleigh distribution with $\sigma_e=0.2$.}
+\label{fig:hist-ecc-jup}
+\end{figure}
+
+\begin{table}[htbp!]
+\centering
+\begin{tabular}{c  c}
+\hline
+\hline
+$\text{N}_{\text{J}}$ & Percentage of Systems \\
+\hline
+0 & 66.875 \% \\
+1 & 1.875 \% \\
+2 & 25.625 \% \\
+3 & 5.625 \% \\
+\hline
+\end{tabular}
+\caption{End distributions of the randomized-mass simulations.}
+\label{tab:randommass}
+\end{table}
+\begin{figure}[htbp!]
+\includegraphics[width=\columnwidth]{NJupiters.pdf}
+\caption{A histogram of the number of planets remaining in the 160 simulated systems after 1 Myr of integration. Note that these are the systems for which the initial masses of the planets were randomized.}
+\label{fig:mass-histogram}
+\end{figure}
+
+Finally, a detailed breakdown of the end results of all 160 simulations is presented in Table \ref{tab:randommass}, with a histogram plotting final system multiplicities presented in Fig. \ref{fig:mass-histogram}. From these, we can see that the majority of systems (66.875 \%) were left with no planets remaining at the end of the simulation. The next most common scenario was that in which only 2 planets were left, which accounted for 25.625 \% of the simulations.
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% RESULTS %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Excitation of the super Earths} \label{sec:standardrun}
+The 160 simulated planetary systems described in section \ref{sec:init} were evolved over 1 Myr, and the end results were then analyzed. 
+
+Figs. \ref{fig:multiplicity}, \ref{fig:nearths}, and \ref{fig:njupiters} show the final plots of eccentricity vs semi-major axis, color-coded by system multiplicity, number of remaining Super-Earths, and number of remaining Jupiters, respectively. As can be seen from these plots, many systems have either been destroyed or disrupted. As well, many planets have become much more eccentric, while others have migrated outwards from their initial positions. There is also a population of systems that have remained dynamically cold.
+
+After studying the end results, we used the code \texttt{CORBITS} to determine the transit probability of Super-Earths in the remaining systems. This is presented in Fig. \ref{fig:transits}. As can be seen from this plot, the number of single-transit systems roughly doubles after 1 Myr of evolution of the systems. While the ratio between the two transit and three transit system stayed roughly the same, the ratio between the signal transit system and the two planet system increased to be a factor of 3.5. 
+
+\begin{figure}[htbp!]
+%\includegraphics[width=\columnwidth]{newinc-multiplicity.pdf}
+\includegraphics[width=\columnwidth]{nplanet_test.pdf}
+\caption{The final plot of orbital eccentricity vs semi-major axis, color-coded by system multiplicity. }
+\label{fig:multiplicity}
+\end{figure}
+\begin{figure}[htbp!]
+%\includegraphics[width=0.9\columnwidth]{newinc-nearths.pdf}
+\includegraphics[width=\columnwidth]{nearth_test.pdf}
+\caption{The final plot of orbital eccentricity vs semi-major axis, color-coded by the number of Super-Earths remaining in the system. As can be seen from this plot, many systems have no Super-Earths left.}
+\label{fig:nearths}
+\end{figure}
+\begin{figure}[htbp!]
+%\includegraphics[width=0.9\columnwidth]{newinc-njupiters.pdf}
+\includegraphics[width=\columnwidth]{njup_test.pdf}
+\caption{The final plot of orbital eccentricity vs semi-major axis, color-coded by the number of Jupiters remaining in the system.}
+\label{fig:njupiters}
+\end{figure}
+
+\begin{figure}[htbp!]
+\includegraphics[width=\columnwidth]{nplanet_inc.pdf}
+\caption{The final plot of inclination vs semi-major axis, color-coded by the system multiplicity.}
+\label{fig:inc}
+\end{figure}
+\begin{figure}[htbp!]
+\includegraphics[width=\columnwidth]{transits.pdf}
+\caption{The probability of 1, 2, or 3 Super-Earth transits being observed from the initial and end conditions of the systems.}
+\label{fig:transits}
+\end{figure}
+
+
+\subsection{Effect of initial mutual inclinations}
+
+\subsection{Effect of run time (TBD)}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BIBLIOGRAPHY %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{thebibliography}{}
+\bibitem[Ballard \& Johnson(2016)]{Ballard2016} Ballard, S., Johnson, J.A. 2016, ApJ, 816, 2
+\bibitem[Johansen et al(2012)]{Johansen2012} Johansen, A., et al. 2012, 
+\bibitem[Lai \& Pu(2016)]{Lai2016} Lai, D., Pu, B. 2016, 
+\bibitem[Moriarty \& Ballard(2015)]{Moriarty2015} Moriarty, J., Ballard, S. 2015,
+\bibitem[Morton et al(2016)]{Morton2016} Morton, T.D., et al. 2016, ApJ, 822, 86
+\bibitem[Rein \& Liu(2011)]{Rein2011} Rein, H., Liu, S-F., 2011, ApJ, 527 
+\end{thebibliography}
+
+
+\end{document}
